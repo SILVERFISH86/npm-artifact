@@ -1,0 +1,25 @@
+name: npm build
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up NODE.JS env
+        uses: actions/setup.node@v2
+        with:
+          node-version: "20"
+      
+      - name: install dependices
+        uses: npm install
+
+      - name: build
+        run: |
+          npm run build
